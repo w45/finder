@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+require 'finder'
+
+path = ARGV[0]
+index = ARGV[1].to_i
+host = ARGV[2]
+threads_count = ARGV[2]
+
+finder = Finder::Search.new(path, index, :host => host, :threads_count => threads_count)
+finder.print_finds

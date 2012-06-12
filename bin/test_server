@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+require 'sinatra'
+require 'xmlsimple'
+require 'yaml'
+
+set :run, true
+
+post '/query' do
+  puts params
+  query = XmlSimple.xml_in(params['query'])
+  word = query['search']
+  items = []
+  100.times do |i|
+    items << {:domain => "#{word}_i.org"}
+  end
+
+  res = XmlSimple.xml_out(:result => items) 
+  puts res
+  res
+end
+
